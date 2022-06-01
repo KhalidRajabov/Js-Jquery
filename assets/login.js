@@ -1,7 +1,11 @@
 $(document).ready(function(){
 
 let user = JSON.parse(localStorage.getItem("dbUser")) 
-if(user.login==true){
+if(user==null){
+    alert("You're not logged in\nRedirecting to login area")
+    window.location="home.html"
+}
+else if(user.login==true){
     
     
     $("#btnLogOut").click(function(){
