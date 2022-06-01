@@ -7,7 +7,6 @@ if(user==null){
 }
 else if(user.login==true){
     
-    
     $("#btnLogOut").click(function(){
         let dbUser =JSON.parse(localStorage.getItem("dbUser"))
         dbUser.login=false
@@ -17,8 +16,6 @@ else if(user.login==true){
 
 
 }
-
-
 
 
 })

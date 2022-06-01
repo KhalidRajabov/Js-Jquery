@@ -10,7 +10,12 @@ $(document).ready(function () {
             alert("You're already logged in\nRedirecting to new page")
             window.location="login.html"
         }
-        if (loginchecker.login==false) {
+        else if (loginchecker.login==false&&loginchecker.checked==true) {
+            
+            alert("You're already logged in\nRedirecting to new page")
+            window.location="login.html"
+        }
+        else if (loginchecker.login==false) {
             
             alert("Please log in")
             
@@ -27,7 +32,8 @@ $(document).ready(function () {
                     window.location = "login.html"
                 }
                 else {
-                    alert("wrong")
+                    alert("Username or password is wrong")
+                    alert("Friendly reminder:\nUsername: asdf\nPassword:1234")
                 }
             })
         }
@@ -37,20 +43,31 @@ $(document).ready(function () {
         let user = {
             username: "asdf",
             password: 1234,
-            login: false
+            login: false,
+            checked: false
         }
         $("#btnLogin").click(function () {
-            if ($("#username").val() == user.username && $("#password").val() == user.password) {
-    
+            if ($("#username").val() == user.username && $("#password").val() == user.password && !($(`#checkbox`).is(`:checked`))) {
+                
                 user.login = true
+                
     
+                localStorage.setItem("dbUser", JSON.stringify(user))
+    
+                window.location = "login.html"
+            }
+            if ($("#username").val() == user.username && $("#password").val() == user.password && ($(`#checkbox`).is(`:checked`))) {
+                
+                user.login = true
+                user.checked = true
     
                 localStorage.setItem("dbUser", JSON.stringify(user))
     
                 window.location = "login.html"
             }
             else {
-                alert("wrong")
+                alert("Username or password is wrong")
+                alert("Friendly reminder:\nUsername: asdf\nPassword:1234")  
             }
         })
     }
