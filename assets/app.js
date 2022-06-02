@@ -10,12 +10,7 @@ $(document).ready(function () {
             alert("You're already logged in\nRedirecting to new page")
             window.location="login.html"
         }
-        else if (loginchecker.login==false&&loginchecker.checked==true) {
-            
-            alert("You're already logged in\nRedirecting to new page")
-            window.location="login.html"
-        }
-        else if (loginchecker.login==false) {
+        if (loginchecker.login==false) {
             
             alert("Please log in")
             
@@ -47,19 +42,10 @@ $(document).ready(function () {
             checked: false
         }
         $("#btnLogin").click(function () {
-            if ($("#username").val() == user.username && $("#password").val() == user.password && !($(`#checkbox`).is(`:checked`))) {
+            if ($("#username").val() == user.username && $("#password").val() == user.password) {
                 
                 user.login = true
-                
     
-                localStorage.setItem("dbUser", JSON.stringify(user))
-    
-                window.location = "login.html"
-            }
-            if ($("#username").val() == user.username && $("#password").val() == user.password && ($(`#checkbox`).is(`:checked`))) {
-                
-                user.login = true
-                user.checked = true
     
                 localStorage.setItem("dbUser", JSON.stringify(user))
     
